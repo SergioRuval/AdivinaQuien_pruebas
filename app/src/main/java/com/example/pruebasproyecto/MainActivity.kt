@@ -1,25 +1,13 @@
 package com.example.pruebasproyecto
 
-import android.content.res.Resources
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.graphics.drawable.toDrawable
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
 import com.bumptech.glide.Glide
 import com.example.pruebasproyecto.fragmentos.PruebaFragment
 import com.example.pruebasproyecto.objects.ListaAvatares
-import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
 
@@ -83,6 +71,12 @@ class MainActivity : AppCompatActivity() {
             val f = supportFragmentManager.findFragmentByTag("Fragmento")
             if(f == null){
                 supportFragmentManager.beginTransaction()
+                    .setCustomAnimations(
+                        R.anim.slide_in,
+                        R.anim.slide_out,
+                        R.anim.slide_in,
+                        R.anim.slide_out
+                    )
                     .add(R.id.linearLayoutForFragment, PruebaFragment.newInstance(), "Fragmento")
                     .commit()
             }else{
